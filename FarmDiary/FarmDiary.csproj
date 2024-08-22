@@ -57,6 +57,16 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\category_icon.jpg" />
+	  <None Remove="Resources\Images\cultivation_icon.jpg" />
+	  <None Remove="Resources\Images\farm_icon.jpg" />
+	  <None Remove="Resources\Images\home_icon.jpg" />
+	  <None Remove="Resources\Images\logout_icon.jpg" />
+	  <None Remove="Resources\Images\stats_icon.jpg" />
+	  <None Remove="Resources\Images\traceability_icon.jpg" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Maui" Version="9.0.0" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
