@@ -7,48 +7,73 @@
             InitializeComponent();
         }
 
-        private async void OnMenuItemTapped(object sender, TappedEventArgs e)
+        private void OnMenuItemTapped(object sender, EventArgs e)
         {
-            if (sender is Label label && label.GestureRecognizers.FirstOrDefault() is TapGestureRecognizer tgr)
+            if (sender is Label label)
             {
-                string menuItem = tgr.CommandParameter?.ToString();
+                // Lấy StackLayout từ parent của label
+                var parentLayout = label.Parent as Frame;
+                var stackLayout = parentLayout?.Parent as StackLayout;
 
-                switch (menuItem)
+                // Kiểm tra stackLayout không phải là null
+                if (stackLayout != null)
                 {
-                    case "Trang chủ":
-                        await NavigateToPage("HomePage");
-                        break;
-                    case "Quản lí trang trại":
-                        await NavigateToPage("FarmManagementPage");
-                        break;
-                    case "Quản lí cây trồng":
-                        await NavigateToPage("CropManagementPage");
-                        break;
-                    case "Quản lí canh tác":
-                        await NavigateToPage("CultivationManagementPage");
-                        break;
-                    case "Thống kê":
-                        await NavigateToPage("StatisticsPage");
-                        break;
-                    case "Truy xuất nguồn gốc":
-                        await NavigateToPage("SourceTracingPage");
-                        break;
-                    case "Logout":
-                        await PerformLogout();
-                        break;
-                    default:
-                        await DisplayAlert("Navigation", "Page not implemented", "OK");
-                        break;
+                    // Xóa kiểu dáng đã chọn của tất cả các mục
+                    foreach (var child in stackLayout.Children)
+                    {
+                        if (child is Frame frame && frame.Content is Label childLabel)
+                        {
+                            childLabel.Style = (childLabel == label) ?
+                                (Style)Resources["SelectedMenuItemStyle"] :
+                                (Style)Resources["MenuItemStyle"];
+                        }
+                    }
+                }
+
+                if (label.GestureRecognizers.FirstOrDefault() is TapGestureRecognizer tgr)
+                {
+                    string menuItem = tgr.CommandParameter?.ToString();
+                    NavigateToPage(menuItem);
                 }
             }
         }
 
-        private async Task NavigateToPage(string pageName)
-        {
-            await DisplayAlert("Navigation", $"Navigating to {pageName}", "OK");
 
-            // await Navigation.PushAsync(new HomePage());
+        private void NavigateToPage(string pageName)
+        {
+            View content = null;
+
+            switch (pageName)
+            {
+                case "HomePage":
+                    //content = new HomePage().Content;
+                    break;
+                case "FarmManagementPage":
+                    content = new FarmManagementPage().Content;
+                    break;
+                case "CropManagementPage":
+                    //content = new CropManagementPage().Content;
+                    break;
+                case "CultivationManagementPage":
+                    //content = new CultivationManagementPage().Content;
+                    break;
+                case "StatisticsPage":
+                    //content = new StatisticsPage().Content;
+                    break;
+                case "SourceTracingPage":
+                    //content = new SourceTracingPage().Content;
+                    break;
+                default:
+                    DisplayAlert("Navigation", "Page not implemented", "OK");
+                    return;
+            }
+
+            if (content != null)
+            {
+                MainContentArea.Content = content;
+            }
         }
+
 
         private async Task PerformLogout()
         {

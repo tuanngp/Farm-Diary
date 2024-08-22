@@ -13,7 +13,6 @@
             <Color x:Key="TextColor">White</Color>
             <Color x:Key="BackgroundColor">#F1F8E9</Color>
             <Color x:Key="BorderColor">#C8E6C9</Color>
-            <Color x:Key="MenuItemSelectedColor">#A5D6A7</Color>
 
             <Style x:Key="HeaderTextStyle" TargetType="Label">
                 <Setter Property="TextColor" Value="{StaticResource TextColor}" />
@@ -27,19 +26,18 @@
                 <Setter Property="Opacity" Value="0.9" />
                 <Setter Property="FontFamily" Value="Arial" />
             </Style>
-            <Style x:Key="MenuItemStyle" TargetType="Frame">
-                <Setter Property="BackgroundColor" Value="White" />
-                <Setter Property="CornerRadius" Value="15" />
-                <Setter Property="HasShadow" Value="True" />
-                <Setter Property="Padding" Value="10" />
-                <Setter Property="Margin" Value="0,5" />
-            </Style>
-            <Style x:Key="MenuLabelStyle" TargetType="Label">
+            <Style x:Key="MenuItemStyle" TargetType="Label">
+                <Setter Property="Padding" Value="15,20" />
                 <Setter Property="TextColor" Value="#33691E" />
                 <Setter Property="FontSize" Value="16" />
                 <Setter Property="FontFamily" Value="Arial" />
-                <Setter Property="VerticalOptions" Value="Center" />
-                <Setter Property="HorizontalOptions" Value="StartAndExpand" />
+            </Style>
+            <Style x:Key="SelectedMenuItemStyle" TargetType="Label">
+                <Setter Property="Padding" Value="15,20" />
+                <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="FontFamily" Value="Arial" />
+                <Setter Property="BackgroundColor" Value="#33691E" />
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -64,7 +62,7 @@
                 </Grid.ColumnDefinitions>
                 <Frame CornerRadius="30" WidthRequest="60" HeightRequest="60" Padding="0" Margin="15,10" 
                        BorderColor="{StaticResource AccentColor}" HasShadow="True">
-                    <Image Source="farm_icon.jpg" Aspect="AspectFill"/>
+                    <Image Source="farm_icon.png" Aspect="AspectFill"/>
                 </Frame>
                 <StackLayout Grid.Column="1" VerticalOptions="Center" Margin="10">
                     <Label Text="Xin chào, Nông dân!" Style="{StaticResource HeaderTextStyle}"/>
@@ -80,65 +78,54 @@
         <!-- Navigation Menu -->
         <ScrollView Grid.Row="1" BackgroundColor="{StaticResource BackgroundColor}">
             <StackLayout Spacing="2" Margin="10">
-                <Frame Style="{StaticResource MenuItemStyle}">
-                    <StackLayout Orientation="Horizontal">
-                        <Image Source="home_icon.jpg" WidthRequest="30" HeightRequest="30" Margin="10,0"/>
-                        <Label Text="Trang chủ" Style="{StaticResource MenuLabelStyle}">
-                            <Label.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="OnMenuItemTapped"/>
-                            </Label.GestureRecognizers>
-                        </Label>
-                    </StackLayout>
+                <Frame BackgroundColor="White" CornerRadius="10" HasShadow="True" Padding="0" Margin="0,5">
+                    <Label Text="Trang chủ" Style="{StaticResource MenuItemStyle}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnMenuItemTapped"/>
+                        </Label.GestureRecognizers>
+                    </Label>
                 </Frame>
-                <Frame Style="{StaticResource MenuItemStyle}">
-                    <StackLayout Orientation="Horizontal">
-                        <Image Source="category_icon.jpg" WidthRequest="30" HeightRequest="30" Margin="10,0"/>
-                        <Label Text="Danh mục cây trồng" Style="{StaticResource MenuLabelStyle}">
-                            <Label.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="OnMenuItemTapped"/>
-                            </Label.GestureRecognizers>
-                        </Label>
-                    </StackLayout>
+                <Frame BackgroundColor="White" CornerRadius="10" HasShadow="True" Padding="0" Margin="0,5">
+                    <Label Text="Trang trại" Style="{StaticResource MenuItemStyle}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnMenuItemTapped" CommandParameter="FarmManagementPage"/>
+                        </Label.GestureRecognizers>
+                    </Label>
                 </Frame>
-                <Frame Style="{StaticResource MenuItemStyle}">
-                    <StackLayout Orientation="Horizontal">
-                        <Image Source="cultivation_icon.jpg" WidthRequest="30" HeightRequest="30" Margin="10,0"/>
-                        <Label Text="Canh tác" Style="{StaticResource MenuLabelStyle}">
-                            <Label.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="OnMenuItemTapped"/>
-                            </Label.GestureRecognizers>
-                        </Label>
-                    </StackLayout>
+                <Frame BackgroundColor="White" CornerRadius="10" HasShadow="True" Padding="0" Margin="0,5">
+                    <Label Text="Danh mục cây trồng" Style="{StaticResource MenuItemStyle}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnMenuItemTapped"/>
+                        </Label.GestureRecognizers>
+                    </Label>
                 </Frame>
-                <Frame Style="{StaticResource MenuItemStyle}">
-                    <StackLayout Orientation="Horizontal">
-                        <Image Source="stats_icon.jpg" WidthRequest="30" HeightRequest="30" Margin="10,0"/>
-                        <Label Text="Thống kê" Style="{StaticResource MenuLabelStyle}">
-                            <Label.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="OnMenuItemTapped"/>
-                            </Label.GestureRecognizers>
-                        </Label>
-                    </StackLayout>
+                <Frame BackgroundColor="White" CornerRadius="10" HasShadow="True" Padding="0" Margin="0,5">
+                    <Label Text="Canh tác" Style="{StaticResource MenuItemStyle}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnMenuItemTapped"/>
+                        </Label.GestureRecognizers>
+                    </Label>
                 </Frame>
-                <Frame Style="{StaticResource MenuItemStyle}">
-                    <StackLayout Orientation="Horizontal">
-                        <Image Source="traceability_icon.jpg" WidthRequest="30" HeightRequest="30" Margin="10,0"/>
-                        <Label Text="Truy xuất nguồn gốc" Style="{StaticResource MenuLabelStyle}">
-                            <Label.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="OnMenuItemTapped"/>
-                            </Label.GestureRecognizers>
-                        </Label>
-                    </StackLayout>
+                <Frame BackgroundColor="White" CornerRadius="10" HasShadow="True" Padding="0" Margin="0,5">
+                    <Label Text="Thống kê" Style="{StaticResource MenuItemStyle}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnMenuItemTapped"/>
+                        </Label.GestureRecognizers>
+                    </Label>
                 </Frame>
-                <Frame Style="{StaticResource MenuItemStyle}">
-                    <StackLayout Orientation="Horizontal">
-                        <Image Source="logout_icon.jpg" WidthRequest="30" HeightRequest="30" Margin="10,0"/>
-                        <Label Text="Đăng xuất" Style="{StaticResource MenuLabelStyle}">
-                            <Label.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="OnMenuItemTapped"/>
-                            </Label.GestureRecognizers>
-                        </Label>
-                    </StackLayout>
+                <Frame BackgroundColor="White" CornerRadius="10" HasShadow="True" Padding="0" Margin="0,5">
+                    <Label Text="Truy xuất nguồn gốc" Style="{StaticResource MenuItemStyle}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnMenuItemTapped"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </Frame>
+                <Frame BackgroundColor="White" CornerRadius="10" HasShadow="True" Padding="0" Margin="0,5">
+                    <Label Text="Đăng xuất" Style="{StaticResource MenuItemStyle}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnMenuItemTapped"/>
+                        </Label.GestureRecognizers>
+                    </Label>
                 </Frame>
             </StackLayout>
         </ScrollView>
@@ -147,6 +134,8 @@
         <Frame Grid.Row="1" Grid.Column="1" BackgroundColor="White" Margin="5" CornerRadius="20" 
                BorderColor="{StaticResource BorderColor}" HasShadow="True">
             <!-- Content to be added here -->
+            <ContentView x:Name="MainContentArea"/>
+            
         </Frame>
     </Grid>
 </ContentPage>
