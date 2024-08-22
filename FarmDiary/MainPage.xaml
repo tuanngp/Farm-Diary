@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FarmDiary.MainPage"
+             NavigationPage.HasNavigationBar="False"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="{DynamicResource PageBackgroundColor}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="PrimaryColor">#2E7D32</Color>
+            <Color x:Key="AccentColor">#81C784</Color>
+            <Color x:Key="TextColor">White</Color>
+            <Color x:Key="BackgroundColor">#F1F8E9</Color>
+            <Color x:Key="BorderColor">#C8E6C9</Color>
+
+            <Style x:Key="HeaderTextStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+                <Setter Property="FontSize" Value="24" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontFamily" Value="Arial" />
+            </Style>
+            <Style x:Key="SubHeaderTextStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="Opacity" Value="0.9" />
+                <Setter Property="FontFamily" Value="Arial" />
+            </Style>
+            <Style x:Key="MenuItemStyle" TargetType="Label">
+                <Setter Property="Padding" Value="15,20" />
+                <Setter Property="TextColor" Value="#33691E" />
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="FontFamily" Value="Arial" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Header -->
+        <Frame Grid.ColumnSpan="2" BackgroundColor="{StaticResource PrimaryColor}" CornerRadius="0" HasShadow="True">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Frame CornerRadius="30" WidthRequest="60" HeightRequest="60" Padding="0" Margin="15,10" 
+                       BorderColor="{StaticResource AccentColor}" HasShadow="True">
+                    <Image Source="farm_icon.png" Aspect="AspectFill"/>
+                </Frame>
+                <StackLayout Grid.Column="1" VerticalOptions="Center" Margin="10">
+                    <Label Text="Xin chào, Nông dân!" Style="{StaticResource HeaderTextStyle}"/>
+                    <Label Text="27°C | Nắng nhẹ" Style="{StaticResource SubHeaderTextStyle}"/>
+                </StackLayout>
+                <Frame Grid.Column="2" BackgroundColor="{StaticResource AccentColor}" CornerRadius="15" Padding="15" Margin="10">
+                    <Label Text="Hôm nay: Tưới nước và bón phân cho cà chua" 
+                           Style="{StaticResource SubHeaderTextStyle}" LineBreakMode="WordWrap"/>
+                </Frame>
+            </Grid>
+        </Frame>
+
+        <!-- Navigation Menu -->
+        <ScrollView Grid.Row="1" BackgroundColor="{StaticResource BackgroundColor}">
+            <StackLayout Spacing="2" Margin="10">
+                <Frame BackgroundColor="White" CornerRadius="10" HasShadow="True" Padding="0" Margin="0,5">
+                    <Label Text="Trang chủ" Style="{StaticResource MenuItemStyle}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnMenuItemTapped"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </Frame>
+                <Frame BackgroundColor="White" CornerRadius="10" HasShadow="True" Padding="0" Margin="0,5">
+                    <Label Text="Danh mục cây trồng" Style="{StaticResource MenuItemStyle}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnMenuItemTapped"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </Frame>
+                <Frame BackgroundColor="White" CornerRadius="10" HasShadow="True" Padding="0" Margin="0,5">
+                    <Label Text="Canh tác" Style="{StaticResource MenuItemStyle}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnMenuItemTapped"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </Frame>
+                <Frame BackgroundColor="White" CornerRadius="10" HasShadow="True" Padding="0" Margin="0,5">
+                    <Label Text="Thống kê" Style="{StaticResource MenuItemStyle}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnMenuItemTapped"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </Frame>
+                <Frame BackgroundColor="White" CornerRadius="10" HasShadow="True" Padding="0" Margin="0,5">
+                    <Label Text="Truy xuất nguồn gốc" Style="{StaticResource MenuItemStyle}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnMenuItemTapped"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </Frame>
+                <Frame BackgroundColor="White" CornerRadius="10" HasShadow="True" Padding="0" Margin="0,5">
+                    <Label Text="Đăng xuất" Style="{StaticResource MenuItemStyle}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnMenuItemTapped"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </Frame>
+            </StackLayout>
+        </ScrollView>
+
+        <!-- Main Content Area -->
+        <Frame Grid.Row="1" Grid.Column="1" BackgroundColor="White" Margin="5" CornerRadius="20" 
+               BorderColor="{StaticResource BorderColor}" HasShadow="True">
+            <!-- Content to be added here -->
+        </Frame>
+    </Grid>
+</ContentPage>
