@@ -81,7 +81,7 @@
                 <Frame BackgroundColor="White" CornerRadius="10" HasShadow="True" Padding="0" Margin="0,5">
                     <Label Text="Trang chủ" Style="{StaticResource MenuItemStyle}">
                         <Label.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="OnMenuItemTapped"/>
+                            <TapGestureRecognizer Tapped="OnMenuItemTapped" CommandParameter="HomePage"/>
                         </Label.GestureRecognizers>
                     </Label>
                 </Frame>

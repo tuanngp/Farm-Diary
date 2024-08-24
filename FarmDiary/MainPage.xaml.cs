@@ -41,12 +41,12 @@
 
         private void NavigateToPage(string pageName)
         {
-            View content = null;
+            View? content = null;
 
             switch (pageName)
             {
                 case "HomePage":
-                    //content = new HomePage().Content;
+                    content = new HomePage().Content;
                     break;
                 case "FarmManagementPage":
                     content = new FarmManagementPage().Content;

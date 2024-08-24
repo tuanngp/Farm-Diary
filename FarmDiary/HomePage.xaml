@@ -1,0 +1,228 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:skia="clr-namespace:SkiaSharp.Views.Maui.Controls;assembly=SkiaSharp.Views.Maui.Controls"
+             xmlns:local="clr-namespace:FarmDiary"
+             x:Class="FarmDiary.HomePage"
+             BackgroundColor="#F0F4F8">
+
+    <ContentPage.Resources>
+        <Style x:Key="CardStyle" TargetType="Frame">
+            <Setter Property="BackgroundColor" Value="White"/>
+            <Setter Property="CornerRadius" Value="20"/>
+            <Setter Property="Margin" Value="0,0,0,20"/>
+            <Setter Property="Padding" Value="20"/>
+            <Setter Property="HasShadow" Value="True"/>
+        </Style>
+
+        <Style x:Key="StatCardStyle" TargetType="Frame">
+            <Setter Property="BackgroundColor" Value="#E3F2FD"/>
+            <Setter Property="CornerRadius" Value="15"/>
+            <Setter Property="Padding" Value="15"/>
+            <Setter Property="HasShadow" Value="False"/>
+        </Style>
+
+        <Style x:Key="HeaderStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="22"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+            <Setter Property="TextColor" Value="#1976D2"/>
+            <Setter Property="Margin" Value="0,0,0,15"/>
+        </Style>
+
+        <Style x:Key="SubHeaderStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+            <Setter Property="TextColor" Value="#2E7D32"/>
+            <Setter Property="Margin" Value="0,0,0,10"/>
+        </Style>
+
+        <Style x:Key="StatLabelStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="TextColor" Value="#37474F"/>
+        </Style>
+
+        <Style x:Key="StatValueStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+            <Setter Property="TextColor" Value="#1976D2"/>
+        </Style>
+
+        <Style x:Key="ProgressBarStyle" TargetType="ProgressBar">
+            <Setter Property="ProgressColor" Value="#4CAF50"/>
+            <Setter Property="BackgroundColor" Value="#E0E0E0"/>
+            <Setter Property="HeightRequest" Value="10"/>
+            <Setter Property="Margin" Value="0,5,0,15"/>
+        </Style>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <StackLayout Padding="20">
+            <Label Text="Trang trại thông minh" Style="{StaticResource HeaderStyle}"/>
+
+            <!-- Greenhouse Selector -->
+            <!-- <Frame Style="{StaticResource CardStyle}"> -->
+            <!--     <StackLayout> -->
+            <!--         <Label Text="Chọn nhà kính" Style="{StaticResource SubHeaderStyle}"/> -->
+            <!--         <CollectionView ItemsSource="{Binding GreenhouseItems}"> -->
+            <!--             <CollectionView.ItemTemplate> -->
+            <!--                 <DataTemplate> -->
+            <!--                     <Frame CornerRadius="50" HeightRequest="80" WidthRequest="80"  -->
+            <!--                            BackgroundColor="{Binding Color}" Margin="5" Padding="0"> -->
+            <!--                         <Frame.GestureRecognizers> -->
+            <!--                             <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type local:HomePage}}, Path=SelectGreenhouseCommand}" -->
+            <!--                                                   CommandParameter="{Binding .}" /> -->
+            <!--                         </Frame.GestureRecognizers> -->
+            <!--                         <Label Text="{Binding Name}" VerticalOptions="Center"  -->
+            <!--                                HorizontalOptions="Center" TextColor="White" -->
+            <!--                                FontAttributes="Bold" FontSize="18"/> -->
+            <!--                     </Frame> -->
+            <!--                 </DataTemplate> -->
+            <!--             </CollectionView.ItemTemplate> -->
+            <!--         </CollectionView> -->
+            <!--     </StackLayout> -->
+            <!-- </Frame> -->
+            <Frame Style="{StaticResource CardStyle}">
+                <StackLayout>
+                    <Label Text="Chọn nhà kính" Style="{StaticResource SubHeaderStyle}"/>
+                    <FlexLayout Direction="Row" JustifyContent="Start" AlignItems="Center" Wrap="Wrap">
+                        <Frame CornerRadius="50" HeightRequest="80" WidthRequest="80" 
+                   BackgroundColor="#4CAF50" Margin="5" Padding="0">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SelectGreenhouseCommand}"
+                                          CommandParameter="A" />
+                            </Frame.GestureRecognizers>
+                            <Label Text="A" VerticalOptions="Center" 
+                       HorizontalOptions="Center" TextColor="White"
+                       FontAttributes="Bold" FontSize="18"/>
+                        </Frame>
+                        <Frame CornerRadius="50" HeightRequest="80" WidthRequest="80" 
+                   BackgroundColor="#2196F3" Margin="5" Padding="0">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SelectGreenhouseCommand}"
+                                          CommandParameter="B" />
+                            </Frame.GestureRecognizers>
+                            <Label Text="B" VerticalOptions="Center" 
+                       HorizontalOptions="Center" TextColor="White"
+                       FontAttributes="Bold" FontSize="18"/>
+                        </Frame>
+                        <Frame CornerRadius="50" HeightRequest="80" WidthRequest="80" 
+                   BackgroundColor="#FFC107" Margin="5" Padding="0">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SelectGreenhouseCommand}"
+                                          CommandParameter="C" />
+                            </Frame.GestureRecognizers>
+                            <Label Text="C" VerticalOptions="Center" 
+                       HorizontalOptions="Center" TextColor="White"
+                       FontAttributes="Bold" FontSize="18"/>
+                        </Frame>
+                        <Frame CornerRadius="50" HeightRequest="80" WidthRequest="80" 
+                   BackgroundColor="#9C27B0" Margin="5" Padding="0">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SelectGreenhouseCommand}"
+                                          CommandParameter="D" />
+                            </Frame.GestureRecognizers>
+                            <Label Text="D" VerticalOptions="Center" 
+                       HorizontalOptions="Center" TextColor="White"
+                       FontAttributes="Bold" FontSize="18"/>
+                        </Frame>
+                        <Frame CornerRadius="50" HeightRequest="80" WidthRequest="80" 
+                   BackgroundColor="#FF5722" Margin="5" Padding="0">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SelectGreenhouseCommand}"
+                                          CommandParameter="E" />
+                            </Frame.GestureRecognizers>
+                            <Label Text="E" VerticalOptions="Center" 
+                       HorizontalOptions="Center" TextColor="White"
+                       FontAttributes="Bold" FontSize="18"/>
+                        </Frame>
+                    </FlexLayout>
+                </StackLayout>
+            </Frame>
+
+
+            <!-- Statistics Grid -->
+            <Frame Style="{StaticResource CardStyle}">
+                <StackLayout>
+                    <Label Text="Thống kê tổng quan" Style="{StaticResource SubHeaderStyle}"/>
+                    <Grid ColumnSpacing="15" RowSpacing="15">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Frame Grid.Column="0" Grid.Row="0" Style="{StaticResource StatCardStyle}">
+                            <StackLayout>
+                                <Label Text="Tổng số nhà lưới" Style="{StaticResource StatLabelStyle}"/>
+                                <Label Text="15" Style="{StaticResource StatValueStyle}"/>
+                            </StackLayout>
+                        </Frame>
+
+                        <Frame Grid.Column="1" Grid.Row="0" Style="{StaticResource StatCardStyle}">
+                            <StackLayout>
+                                <Label Text="Tổng diện tích" Style="{StaticResource StatLabelStyle}"/>
+                                <Label Text="500 ha" Style="{StaticResource StatValueStyle}"/>
+                            </StackLayout>
+                        </Frame>
+
+                        <Frame Grid.Column="0" Grid.Row="1" Style="{StaticResource StatCardStyle}">
+                            <StackLayout>
+                                <Label Text="Tổng số lượng" Style="{StaticResource StatLabelStyle}"/>
+                                <Label Text="50,000" Style="{StaticResource StatValueStyle}"/>
+                            </StackLayout>
+                        </Frame>
+
+                        <Frame Grid.Column="1" Grid.Row="1" Style="{StaticResource StatCardStyle}">
+                            <StackLayout>
+                                <Label Text="Đang canh tác" Style="{StaticResource StatLabelStyle}"/>
+                                <Label Text="450 ha" Style="{StaticResource StatValueStyle}"/>
+                            </StackLayout>
+                        </Frame>
+
+                        <Frame Grid.Column="0" Grid.Row="2" Style="{StaticResource StatCardStyle}">
+                            <StackLayout>
+                                <Label Text="Cây đang trồng" Style="{StaticResource StatLabelStyle}"/>
+                                <Label Text="100,000" Style="{StaticResource StatValueStyle}"/>
+                            </StackLayout>
+                        </Frame>
+
+                        <Frame Grid.Column="1" Grid.Row="2" Style="{StaticResource StatCardStyle}">
+                            <StackLayout>
+                                <Label Text="Sản lượng tháng" Style="{StaticResource StatLabelStyle}"/>
+                                <Label Text="2,500 tấn" Style="{StaticResource StatValueStyle}"/>
+                            </StackLayout>
+                        </Frame>
+                    </Grid>
+                </StackLayout>
+            </Frame>
+
+            <!-- Chart -->
+            <Frame Style="{StaticResource CardStyle}">
+                <StackLayout>
+                    <Label Text="Sản lượng trong năm" Style="{StaticResource SubHeaderStyle}"/>
+                    <skia:SKCanvasView x:Name="CanvasView" 
+                                       PaintSurface="OnCanvasViewPaintSurface"
+                                       HeightRequest="500"
+                                       WidthRequest="700"
+                                       />
+                </StackLayout>
+            </Frame>
+
+            <!-- Progress Bars -->
+            <Frame Style="{StaticResource CardStyle}">
+                <StackLayout>
+                    <Label Text="Tiến độ canh tác" Style="{StaticResource SubHeaderStyle}"/>
+                    <Label Text="Nhà lưới A - 30%" Style="{StaticResource StatLabelStyle}"/>
+                    <ProgressBar Progress="0.3" Style="{StaticResource ProgressBarStyle}"/>
+                    <Label Text="Nhà lưới B - 50%" Style="{StaticResource StatLabelStyle}"/>
+                    <ProgressBar Progress="0.5" Style="{StaticResource ProgressBarStyle}"/>
+                    <Label Text="Nhà lưới C - 70%" Style="{StaticResource StatLabelStyle}"/>
+                    <ProgressBar Progress="0.7" Style="{StaticResource ProgressBarStyle}"/>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

@@ -2,126 +2,130 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FarmDiary.FarmManagementPage"
-             Title="FarmManagementPage">
+             Title="Quản lý Trang trại"
+             BackgroundColor="White">
     <ContentPage.Resources>
         <ResourceDictionary>
-            <Color x:Key="PrimaryColor">#2E7D32</Color>
+            <Color x:Key="PrimaryColor">#4CAF50</Color>
             <Color x:Key="AccentColor">#81C784</Color>
-            <Color x:Key="TextColor">White</Color>
-            <Color x:Key="BackgroundColor">#F1F8E9</Color>
-            <Color x:Key="BorderColor">#C8E6C9</Color>
+            <Color x:Key="TextColor">#212121</Color>
+            <Color x:Key="SubtleColor">#EEEEEE</Color>
+            <Color x:Key="BorderColor">#BDBDBD</Color>
 
             <Style x:Key="HeaderTextStyle" TargetType="Label">
-                <Setter Property="TextColor" Value="{StaticResource TextColor}" />
-                <Setter Property="FontSize" Value="24" />
+                <Setter Property="TextColor" Value="{StaticResource PrimaryColor}" />
+                <Setter Property="FontSize" Value="28" />
                 <Setter Property="FontAttributes" Value="Bold" />
                 <Setter Property="FontFamily" Value="Arial" />
             </Style>
             <Style x:Key="SubHeaderTextStyle" TargetType="Label">
                 <Setter Property="TextColor" Value="{StaticResource TextColor}" />
-                <Setter Property="FontSize" Value="18" />
-                <Setter Property="Opacity" Value="0.9" />
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="FontAttributes" Value="Bold" />
                 <Setter Property="FontFamily" Value="Arial" />
             </Style>
-            <Style x:Key="MenuItemStyle" TargetType="Label">
-                <Setter Property="Padding" Value="15,20" />
-                <Setter Property="TextColor" Value="#33691E" />
+            <Style x:Key="ButtonStyle" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="CornerRadius" Value="8" />
+                <Setter Property="Padding" Value="15,10" />
                 <Setter Property="FontSize" Value="16" />
-                <Setter Property="FontFamily" Value="Arial" />
             </Style>
-            <Style x:Key="SelectedMenuItemStyle" TargetType="Label">
-                <Setter Property="Padding" Value="15,20" />
+            <Style x:Key="EntryStyle" TargetType="Entry">
+                <Setter Property="BackgroundColor" Value="{StaticResource SubtleColor}" />
                 <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+                <Setter Property="PlaceholderColor" Value="#9E9E9E" />
                 <Setter Property="FontSize" Value="16" />
-                <Setter Property="FontFamily" Value="Arial" />
-                <Setter Property="BackgroundColor" Value="#33691E" />
+                <Setter Property="Margin" Value="0,5,0,15" />
+            </Style>
+            <Style x:Key="FrameStyle" TargetType="Frame">
+                <Setter Property="BackgroundColor" Value="White" />
+                <Setter Property="CornerRadius" Value="12" />
+                <Setter Property="Padding" Value="20" />
+                <Setter Property="Margin" Value="0,10" />
+                <Setter Property="HasShadow" Value="True" />
+                <Setter Property="BorderColor" Value="{StaticResource BorderColor}" />
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
 
     <ScrollView>
-        <VerticalStackLayout Padding="10">
+        <VerticalStackLayout Padding="20">
+            <!-- Header -->
+            <Label Text="Quản lý Trang trại" Style="{StaticResource HeaderTextStyle}" HorizontalOptions="Center" Margin="0,0,0,20"/>
 
             <!-- Navigation Bar -->
-            <HorizontalStackLayout Spacing="10">
-                <Button Text="&#x25C0;" WidthRequest="50" />
-                <Button Text="Nhà lưới A" WidthRequest="100" />
-                <Button Text="Nhà Lưới B" WidthRequest="100" />
-                <Button Text="&#x25B6;" WidthRequest="50" />
-                <Button Text="Thêm" BackgroundColor="LightGreen" WidthRequest="80" />
-            </HorizontalStackLayout>
+            <Frame Style="{StaticResource FrameStyle}" Padding="10" BackgroundColor="{StaticResource SubtleColor}">
+                <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
+                    <Button Text="&#x25C0;" WidthRequest="50" Style="{StaticResource ButtonStyle}"/>
+                    <Button Text="Nhà lưới A" WidthRequest="120" Style="{StaticResource ButtonStyle}"/>
+                    <Button Text="Nhà Lưới B" WidthRequest="120" Style="{StaticResource ButtonStyle}"/>
+                    <Button Text="&#x25B6;" WidthRequest="50" Style="{StaticResource ButtonStyle}"/>
+                    <Button Text="Thêm" BackgroundColor="{StaticResource AccentColor}" TextColor="White" WidthRequest="100" Style="{StaticResource ButtonStyle}"/>
+                </HorizontalStackLayout>
+            </Frame>
 
             <!-- Main Content -->
-            <Grid RowDefinitions="Auto,*"
-                  ColumnDefinitions="2*,*"
-                  Margin="0,10,0,0">
+            <Grid ColumnDefinitions="*, *" ColumnSpacing="20">
                 <!-- Left Section: Farm Information -->
-                <VerticalStackLayout Grid.Row="0" Grid.Column="0" Padding="10">
-                    <Label Text="Thông tin trang trại" FontSize="16" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,0,0,10"/>
+                <Frame Grid.Column="0" Style="{StaticResource FrameStyle}">
+                    <VerticalStackLayout>
+                        <Label Text="Thông tin trang trại" Style="{StaticResource SubHeaderTextStyle}" HorizontalOptions="Center" Margin="0,0,0,15"/>
 
-                    <Label Text="Tên trang trại"/>
-                    <Entry Placeholder="Tên trang trại" Margin="0,0,0,10"/>
+                        <Label Text="Tên trang trại" FontAttributes="Bold"/>
+                        <Entry Placeholder="Nhập tên trang trại" Style="{StaticResource EntryStyle}"/>
 
-                    <Label Text="Tỉnh thành:"/>
-                    <Entry Placeholder="Tỉnh thành" Margin="0,0,0,10"/>
+                        <Label Text="Tỉnh thành" FontAttributes="Bold"/>
+                        <Entry Placeholder="Chọn tỉnh thành" Style="{StaticResource EntryStyle}"/>
 
-                    <Label Text="Địa chỉ:"/>
-                    <Entry Placeholder="Địa chỉ" Margin="0,0,0,10"/>
+                        <Label Text="Địa chỉ" FontAttributes="Bold"/>
+                        <Entry Placeholder="Nhập địa chỉ" Style="{StaticResource EntryStyle}"/>
 
-                    <Label Text="Số điện thoại:"/>
-                    <Entry Placeholder="Số điện thoại" Margin="0,0,0,10"/>
+                        <Label Text="Số điện thoại" FontAttributes="Bold"/>
+                        <Entry Placeholder="Nhập số điện thoại" Style="{StaticResource EntryStyle}" Keyboard="Telephone"/>
 
-                    <Label Text="Mô tả"/>
-                    <Editor HeightRequest="100" Placeholder="Mô tả" Margin="0,0,0,10"/>
+                        <Label Text="Mô tả" FontAttributes="Bold"/>
+                        <Editor HeightRequest="100" Placeholder="Nhập mô tả" BackgroundColor="{StaticResource SubtleColor}" Margin="0,5,0,15"/>
 
-                    <Button Text="Cập nhật thông tin" HorizontalOptions="Center"/>
-                </VerticalStackLayout>
+                        <Button Text="Cập nhật thông tin" Style="{StaticResource ButtonStyle}" HorizontalOptions="Center"/>
+                    </VerticalStackLayout>
+                </Frame>
 
                 <!-- Right Section: Certificates -->
-                <VerticalStackLayout Grid.Row="0" Grid.Column="1" Padding="10">
-                    <Label Text="Chứng chỉ" FontSize="16" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,0,0,10"/>
-                    <Border Stroke="Black" StrokeThickness="1" Padding="0">
-                        <Grid ColumnDefinitions="*,*,*" RowDefinitions="auto, auto, auto">
-                            <BoxView Grid.Column="0" Grid.RowSpan="1000" WidthRequest="1" Color="Black" VerticalOptions="Fill" HorizontalOptions="End" />
-                            <BoxView Grid.Column="1" Grid.RowSpan="1000" WidthRequest="1" Color="Black" VerticalOptions="Fill" HorizontalOptions="End" />
-                            <!-- Table Headers -->
-                            <Label Text="Tên" FontAttributes="Bold" Grid.Row="0" HorizontalOptions="Center"/>
-                            <Label Text="Mô tả" FontAttributes="Bold" Grid.Row="0" Grid.Column="1" HorizontalOptions="Center"/>
-                            <Label Text="Hình ảnh" FontAttributes="Bold" Grid.Row="0" Grid.Column="2" HorizontalOptions="Center"/>
+                <Frame Grid.Column="1" Style="{StaticResource FrameStyle}">
+                    <VerticalStackLayout>
+                        <Label Text="Chứng chỉ" Style="{StaticResource SubHeaderTextStyle}" HorizontalOptions="Center" Margin="0,0,0,15"/>
 
-                            <!-- Horizontal Line under headers -->
-                            <BoxView Grid.Row="0" Grid.ColumnSpan="3" HeightRequest="1" Color="Black" VerticalOptions="End" HorizontalOptions="FillAndExpand" />
+                        <Frame BorderColor="{StaticResource BorderColor}" Padding="0" CornerRadius="8" HasShadow="False">
+                            <Grid ColumnDefinitions="*, *, *" RowDefinitions="Auto, Auto, Auto">
+                                <!-- Table Headers -->
+                                <Label Text="Tên" Grid.Column="0" FontAttributes="Bold" Padding="10" BackgroundColor="{StaticResource AccentColor}" TextColor="White"/>
+                                <Label Text="Mô tả" Grid.Column="1" FontAttributes="Bold" Padding="10" BackgroundColor="{StaticResource AccentColor}" TextColor="White"/>
+                                <Label Text="Hình ảnh" Grid.Column="2" FontAttributes="Bold" Padding="10" BackgroundColor="{StaticResource AccentColor}" TextColor="White"/>
 
-                            <!-- Table Content -->
-                            <Label Text="Tên 1" Grid.Row="1" HorizontalOptions="Center"/>
-                            <Label Text="Mô tả 1" Grid.Row="1" Grid.Column="1" HorizontalOptions="Center"/>
-                            <Label Text="Hình 1" Grid.Row="1" Grid.Column="2" HorizontalOptions="Center"/>
-                            <BoxView Grid.Row="1" Grid.ColumnSpan="3" HeightRequest="1" Color="Black" VerticalOptions="End" HorizontalOptions="FillAndExpand" />
+                                <!-- Table Content -->
+                                <Label Text="Tên 1" Grid.Row="1" Grid.Column="0" Padding="10"/>
+                                <Label Text="Mô tả 1" Grid.Row="1" Grid.Column="1" Padding="10"/>
+                                <Label Text="Hình 1" Grid.Row="1" Grid.Column="2" Padding="10"/>
 
-                            <Label Text="Tên 2" Grid.Row="2" HorizontalOptions="Center"/>
-                            <Label Text="Mô tả 2" Grid.Row="2" Grid.Column="1" HorizontalOptions="Center"/>
-                            <Label Text="Hình 2" Grid.Row="2" Grid.Column="2" HorizontalOptions="Center"/>
-                            <BoxView Grid.Row="2" Grid.ColumnSpan="3" HeightRequest="1" Color="Black" VerticalOptions="End" HorizontalOptions="FillAndExpand" />
+                                <Label Text="Tên 2" Grid.Row="2" Grid.Column="0" Padding="10"/>
+                                <Label Text="Mô tả 2" Grid.Row="2" Grid.Column="1" Padding="10"/>
+                                <Label Text="Hình 2" Grid.Row="2" Grid.Column="2" Padding="10"/>
+                            </Grid>
+                        </Frame>
 
-                            <!-- Add more rows dynamically as needed -->
-                        </Grid>
-                    </Border>
+                        <!-- Pagination -->
+                        <HorizontalStackLayout HorizontalOptions="Center" Margin="0,15,0,15">
+                            <Button Text="&#x25C0;" WidthRequest="40" Style="{StaticResource ButtonStyle}"/>
+                            <Label Text="2 / 5" VerticalOptions="Center" Margin="15,0" FontSize="16"/>
+                            <Button Text="&#x25B6;" WidthRequest="40" Style="{StaticResource ButtonStyle}"/>
+                        </HorizontalStackLayout>
 
-
-
-                    <!-- Pagination -->
-                    <HorizontalStackLayout HorizontalOptions="Center" Margin="10">
-                        <Button Text="&#x25C0;" WidthRequest="30"/>
-                        <Label Text="2 / 5" VerticalOptions="Center" Margin="5"/>
-                        <Button Text="&#x25B6;" WidthRequest="30"/>
-                    </HorizontalStackLayout>
-
-                    <!-- Add Certificate Button -->
-                    <Button Text="Thêm chứng chỉ" HorizontalOptions="Center"/>
-                </VerticalStackLayout>
+                        <!-- Add Certificate Button -->
+                        <Button Text="Thêm chứng chỉ" Style="{StaticResource ButtonStyle}" HorizontalOptions="Center"/>
+                    </VerticalStackLayout>
+                </Frame>
             </Grid>
         </VerticalStackLayout>
     </ScrollView>
-
-
 </ContentPage>

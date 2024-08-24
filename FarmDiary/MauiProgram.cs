@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Maui;
 using FarmDiary;
-
+using SkiaSharp.Views.Maui.Controls.Hosting;
 public static class MauiProgram
 {
     public static MauiApp CreateMauiApp()
@@ -10,6 +10,7 @@ public static class MauiProgram
             .UseMauiApp<App>()
             // Initialize the .NET MAUI Community Toolkit by adding the below line of code
             .UseMauiCommunityToolkit()
+            .UseSkiaSharp()
             // After initializing the .NET MAUI Community Toolkit, optionally add additional fonts
             .ConfigureFonts(fonts =>
             {
