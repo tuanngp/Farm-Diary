@@ -81,7 +81,7 @@
                 <Frame BackgroundColor="White" CornerRadius="10" HasShadow="True" Padding="0" Margin="0,5">
                     <Label Text="Danh mục cây trồng" Style="{StaticResource MenuItemStyle}">
                         <Label.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="OnMenuItemTapped"/>
+                            <TapGestureRecognizer Tapped="OnMenuItemTapped" CommandParameter="Danh mục cây trồng"/>
                         </Label.GestureRecognizers>
                     </Label>
                 </Frame>
@@ -117,8 +117,8 @@
         </ScrollView>
 
         <!-- Main Content Area -->
-        <Frame Grid.Row="1" Grid.Column="1" BackgroundColor="White" Margin="5" CornerRadius="20" 
-               BorderColor="{StaticResource BorderColor}" HasShadow="True">
+        <Frame x:Name="mainContentFrame" Grid.Row="1" Grid.Column="1" BackgroundColor="White" Margin="5" CornerRadius="20" 
+            BorderColor="{StaticResource BorderColor}" HasShadow="True">
             <!-- Content to be added here -->
         </Frame>
     </Grid>

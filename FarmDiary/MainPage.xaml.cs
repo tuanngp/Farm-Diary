@@ -21,8 +21,9 @@
                     case "Quản lí trang trại":
                         await NavigateToPage("FarmManagementPage");
                         break;
-                    case "Quản lí cây trồng":
-                        await NavigateToPage("CropManagementPage");
+                    case "Danh mục cây trồng":
+                        mainContentFrame.Content = new CropManagementPage().Content;
+                       
                         break;
                     case "Quản lí canh tác":
                         await NavigateToPage("CultivationManagementPage");
@@ -49,6 +50,7 @@
 
             // await Navigation.PushAsync(new HomePage());
         }
+
 
         private async Task PerformLogout()
         {

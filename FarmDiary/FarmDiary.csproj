@@ -69,4 +69,10 @@
 	  </Reference>
 	</ItemGroup>
 
+	<ItemGroup>
+	  <MauiXaml Update="CropManagementPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
 </Project>
